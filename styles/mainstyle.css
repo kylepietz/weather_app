@@ -1,0 +1,51 @@
+h1 {
+	text-align: center;
+	margin-top: 8px;
+	margin-bottom: 16px;
+}
+
+form {
+	width: 320px;
+	margin:0 auto;
+}
+
+select.form-control {
+	width: 160px;
+}
+
+.alert.alert-danger, .alert.alert-success {
+	width: 320px;
+	margin:0 auto;
+	margin-bottom: 16px;
+	margin-top: 16px;
+}
+
+.btn.btn-primary {
+	margin-bottom: 16px;
+	background-color: #00ccff;
+	border-color: #ffffff;
+}
+
+.card {
+	margin:0 auto;
+	margin-bottom: 16px;
+}
+
+.card-block {
+	padding-top: 8px;
+	padding-bottom: 0px;
+}
+
+h4 {
+	display: inline;
+	padding-top: 16px;
+}
+
+.header-container {
+	padding-bottom: 8px;
+}
+
+div img {
+	display: inline;
+	float:right;
+}
