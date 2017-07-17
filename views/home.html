@@ -1,76 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/mainstyle.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Angular + Controller -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="../controllers/weather_controller.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles/mainstyle.css">
 
-  </head>
+  <!-- Angular + Controller -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="../controllers/weather_controller.js"></script>
 
-  <!-- BODY -->
-  <body ng-app="weather_app" ng-controller="weather_ctrl">
+</head>
 
-  	<div class="alert alert-danger" role="alert" ng-show="duplicateMessage">
-  		<strong>Oops!</strong> Looks like that item is already in the list.
-	</div>
-	<div class="alert alert-danger" role="alert" ng-show="emptyMessage">
-  		<strong>Oops!</strong> One or more fields were empty. Please enter a valid city and state.
-	</div>
-	<div class="alert alert-danger" role="alert" ng-show="errorMessage">
-  		<strong>Oops!</strong> Couldn't find that location. Please enter a valid city and state.
-	</div>
-	<div class="alert alert-success" role="alert" ng-show="successMessage">
-  		<strong>New Location!</strong> Just added {{locations[locations.length-1].city}}, {{locations[locations.length-1].state}} to your list.
-	</div>
+<!-- BODY -->
 
-	<h1>My Weather Locations</h1>
+<body ng-app="weather_app" ng-controller="weather_ctrl">
 
-  	<!-- Add Location -->
-  	<form>
-  		<div class="form-group">
-    		<label for="exampleInputEmail1">City</label>
-    		<input type="text" class="form-control" placeholder="Enter city..." ng-model="displayedLoc.city">
-  		</div>
-  		<div class="form-group">
-    		<label for="exampleSelect1">State</label>
-    		<select class="form-control" ng-model="displayedLoc.state">
+  <div class="alert alert-danger" role="alert" ng-show="duplicateMessage">
+    <strong>Oops!</strong> Looks like that item is already in the list.
+  </div>
+  <div class="alert alert-danger" role="alert" ng-show="emptyMessage">
+    <strong>Oops!</strong> One or more fields were empty. Please enter a valid city and state.
+  </div>
+  <div class="alert alert-danger" role="alert" ng-show="errorMessage">
+    <strong>Oops!</strong> Couldn't find that location. Please enter a valid city and state.
+  </div>
+  <div class="alert alert-success" role="alert" ng-show="successMessage">
+    <strong>New Location!</strong> Just added {{locations[locations.length-1].city}}, {{locations[locations.length-1].state}} to your list.
+  </div>
+
+  <h1>My Weather Locations</h1>
+
+  <!-- Add Location -->
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">City</label>
+      <input type="text" class="form-control" placeholder="Enter city..." ng-model="displayedLoc.city">
+    </div>
+    <div class="form-group">
+      <label for="exampleSelect1">State</label>
+      <select class="form-control" ng-model="displayedLoc.state">
     			<option>Select state...</option>
       			<option ng-repeat="s in stateArray">{{s.abbreviation}}</option>
     		</select>
-  		</div>
-  
-  <button type="submit" class="btn btn-primary" ng-click="addLocation(displayedLoc)">Add Location</button>
-  <br>
-</form>
+    </div>
 
-	<!-- Cards (repeated over all locations) -->
-    <div class="card" style="width: 20rem;" ng-repeat="x in locations">
-  		
-  		<div class="card-block">
-  			<div class="header-container">
-    			<h4 class="card-title">{{x.city}}, {{x.state}}</h4>
-    			<img class="card-img-top" src={{x.img}} alt="Card image cap" height="32" width="32">
-    		</div>
-    		<ul class="list-group list-group-flush">
-    			<li class="list-group-item">{{x.weather}}</li>
-    			<li class="list-group-item">{{x.temp}}&#8457;</li>
-    			<li class="list-group-item">Humidity: {{x.humidity}}</li>
-    			<li class="list-group-item" style="font-size: 10px;">{{x.updated}}</li>
-    		</ul>
-  		</div>
-	</div>
+    <button type="submit" class="btn btn-primary" ng-click="addLocation(displayedLoc)">Add Location</button>
+    <br>
+  </form>
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
+  <!-- Cards (repeated over all locations) -->
+  <div class="card" style="width: 20rem;" ng-repeat="x in locations">
+
+    <div class="card-block">
+      <div class="header-container">
+        <h4 class="card-title">{{x.city}}, {{x.state}}</h4>
+        <img class="card-img-top" src={{x.img}} alt="Card image cap" height="32" width="32">
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{x.weather}}</li>
+        <li class="list-group-item">{{x.temp}}&#8457;</li>
+        <li class="list-group-item">Humidity: {{x.humidity}}</li>
+        <li class="list-group-item" style="font-size: 10px;">{{x.updated}}</li>
+      </ul>
+      <button class="btn btn-primary" id="remove" ng-click="removeLocation(x)">Remove</button>
+    </div>
+  </div>
+
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+
 </html>
